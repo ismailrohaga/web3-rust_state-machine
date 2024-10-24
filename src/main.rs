@@ -25,3 +25,13 @@ fn main() {
 	println!("Bob balance is {:?}", balance.get_balance("Bob"));
 	println!("Charlie balance is {:?}", balance.get_balance("Charlie"));
 }
+
+#[test]
+fn init_balances() {
+	let mut balance = balances::Pallet::new();
+
+	assert_eq!(balance.get_balance("Alice"), 0);
+	balance.set_balance("Alice", 100);
+	assert_eq!(balance.get_balance("Alice"), 100);
+	assert_eq!(balance.get_balance("Bob"), 0);
+}
