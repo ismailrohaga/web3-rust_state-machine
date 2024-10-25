@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 
 mod balances;
+mod system;
 
 fn main() {
 	println!("Hello, world!");
@@ -21,9 +22,12 @@ fn main() {
 	balance.set_balance("Alice", 100);
 	balance.set_balance("Bob", 200);
 	balance.set_balance("Charlie", 300);
+	let _ = balance.transfer("Alice", "Bob", 50);
 	println!("Alice balance is {:?}", balance.get_balance("Alice"));
 	println!("Bob balance is {:?}", balance.get_balance("Bob"));
 	println!("Charlie balance is {:?}", balance.get_balance("Charlie"));
+
+	let _ = system::Pallet::new();
 }
 
 #[test]
